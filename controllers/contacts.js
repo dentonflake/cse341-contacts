@@ -9,14 +9,14 @@ const getAll = async (req, res) => {
     const result = await mongodb
       .getDatabase()
       .db()
-      .collection('users')
+      .collection('contacts')
       .find();
     
-    const users = await result.toArray();
+    const contacts = await result.toArray();
 
     res
       .setHeader('Content-Type', 'application/json')
-      .status(200).json(users);
+      .status(200).json(contacts);
 
   } catch (err) {
 
@@ -33,14 +33,14 @@ const getSingle = async (req, res) => {
     const result = await mongodb
       .getDatabase()
       .db()
-      .collection('users')
+      .collection('contacts')
       .find({ _id });
     
-    const users = await result.toArray();
+    const contacts = await result.toArray();
 
     res
       .setHeader('Content-Type', 'application/json')
-      .status(200).json(users[0]);
+      .status(200).json(contacts[0]);
 
   } catch (err) {
 
